@@ -1,0 +1,10 @@
+class Solution {
+    public int trailingZeroes(int n) {
+        
+        int numOfFives = 0;
+
+        for (long i = 5; i <= n; i *= 5)
+            numOfFives += n / i;
+        return numOfFives;
+    }
+}
