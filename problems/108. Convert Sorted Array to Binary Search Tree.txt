@@ -1,0 +1,28 @@
+class Solution {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        
+        
+        int end = nums.length - 1;
+        int start = 0;
+        TreeNode root = new TreeNode();
+        return helperForBST(root, nums, start, end);
+    }
+    
+    private TreeNode helperForBST(TreeNode root, int[] nums, int start, int end) {
+        // Base condition
+        if(start > end){
+            return null;
+        }
+        
+        // Get the middle element and make it root
+        int mid = (start + end) / 2;
+        root = new TreeNode(nums[mid]);
+        
+        // 
+        root.left = helperForBST( root, nums, start, mid - 1); 
+        root.right = helperForBST(root, nums, mid + 1, end);
+        
+        return root;
+    }
+
+}
