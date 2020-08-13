@@ -1,0 +1,77 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    
+//     public boolean hasPathSum(TreeNode root, int sum) {
+        
+//         int total = 0;   
+//         return helper(root, sum, total);
+//     }
+    
+//     private static boolean helper(TreeNode root, int sum, int total) {
+        
+        
+//         // base case
+        
+        
+//         // check for leaf 
+//         if(root.left == null && root.right == null) {
+//             total = total + root.val;
+//             if(total==sum) {
+//                 return true;
+//             } else {
+//                 System.out.println("At leaf " + total);
+//                 total = total - root.val; // 20
+//             }
+//         } else {
+//             total += root.val; // 27
+//             System.out.println("total " + total);
+//             if(root.left!=null){
+//                 helper(root.left, sum, total);    
+//             }
+//             if(root.right!=null){
+//                 helper(root.right, sum, total);    
+//             }    
+//         }
+        
+//         //
+        
+        
+//         return false;
+//     }
+    
+    
+    public boolean hasPathSumhelper(TreeNode root,int s,int sum){
+       if(root != null){
+           s += root.val;
+           if(root.left == null && root.right == null) {
+               if (s == sum) return true;
+               else return false;
+           }
+       
+          return hasPathSumhelper(root.left,s,sum) || hasPathSumhelper(root.right,s,sum);
+       }
+        return false;
+     };
+    
+    public boolean hasPathSum(TreeNode root, int sum) {
+        //recursion 
+        int s = 0;
+        return hasPathSumhelper(root, s, sum); 
+    }
+}
+
+
