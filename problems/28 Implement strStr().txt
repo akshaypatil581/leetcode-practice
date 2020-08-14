@@ -1,0 +1,22 @@
+// class Solution {
+//     public int strStr(String haystack, String needle) {
+//         return haystack.indexOf(needle);
+//     }
+// }
+
+class Solution {
+    public int strStr(String haystack, String needle) {
+        if(needle.isEmpty())return 0;
+        int m = haystack.length();
+        int n = needle.length();
+        int i=0,diff=m-n,index=-1;
+        while (diff>=0){
+            if (haystack.charAt(i)==needle.charAt(0)){
+                if(haystack.substring(i,i+n).compareTo(needle)==0){
+                    index=i;break;
+                }
+            }diff--;i++;
+        }
+        return index;
+    }
+}
